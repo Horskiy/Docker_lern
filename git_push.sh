@@ -19,7 +19,7 @@ git commit -m "$commit_message"
 repos=("git@github.com:Horskiy/Alex_Horskiy.git")
 
 # The branch to be strangled
-branch="main"
+branch="origin" #"main"
 
 for repo in "${repos[@]}"; do
     echo "Pushing to $repo..."
