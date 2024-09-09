@@ -1,2 +1,0 @@
-FROM debian:wheezy
-RUN apt-get update && apt-get install - cowsay fortune
