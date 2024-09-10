@@ -90,3 +90,36 @@ docker system prune                       # delete all unused data docker (conte
 ```bash
 docker commit cowsay test/cowsayimage
 ```
+### 
+```bash
+sudo service docker stop
+systemctl stop docker
+Metod 1
+ps -ef | grep -E 'docker(d| -d| daemon)\b' | grep -v grep
+
+sudo dockerd -H tcp://0.0.0.0:2375
+
+docker -H tcp://<your host's ip>:2375 <subcommand>
+
+Metod 2
+docker run -d -i -p 1234:1234 --name daemon ubuntu:14.04 nc -l 1234
+
+telnet localhost 1234
+telnet> q
+
+docker logs daemon
+
+docker rm daemon
+```
+### docker run--restart
+```bash
+docker run--restart
+no                     = Не перезапускать при выходе контейнера
+always                 = Всегда перезапускать при выходе контейнера
+unless-stopped         = Всегда перезагружать, но помнить о явной остановке
+on-failure[:max-retry] = Перезапускать только в случае сбоя [количество перезапусков]
+```
+### Перемещение Docker в другой раздел
+```bash
+dockerd -g /home/dockeruser/mydocker
+```
